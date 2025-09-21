@@ -21,6 +21,7 @@ export interface UserProfile {
   updatedAt: Timestamp
 }
 
+
 export interface Note {
   id: string
   title: string
