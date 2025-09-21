@@ -1,0 +1,17 @@
+{
+  "name": "AURA - Focus smarter. Create faster. Live brighter.",
+  "short_name": "AURA",
+  "description": "AI-powered productivity and note-taking application",
+  "icons": [
+    {
+      "src": "/aura-icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ],
+  "start_url": "/",
+  "display": "standalone",
+  "theme_color": "#06b6d4",
+  "background_color": "#0f172a",
+  "orientation": "portrait-primary"
+}

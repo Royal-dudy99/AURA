@@ -1,0 +1,68 @@
+{
+  "landing": {
+    "badge": "AI-Powered Productivity",
+    "description": "Transform your notes with AI, build lasting habits, and achieve your goals with our comprehensive productivity platform.",
+    "getStarted": "Get Started Free",
+    "tryDemo": "Try Demo",
+    "signIn": "Sign In",
+    "features": {
+      "ainotesflashcards": {
+        "title": "AI Notes & Flashcards",
+        "description": "Transform any text into smart summaries, flashcards, and mindmaps"
+      },
+      "habitgoaltracker": {
+        "title": "Habit & Goal Tracker",
+        "description": "Build lasting habits with streak tracking and personalized challenges"
+      },
+      "aiassistant": {
+        "title": "AI Assistant",
+        "description": "Get help with writing, planning, and problem-solving"
+      }
+    },
+    "stats": {
+      "title": "Trusted by thousands worldwide",
+      "users": "Active Users",
+      "notes": "Notes Created",
+      "habits": "Habits Tracked",
+      "satisfaction": "Satisfaction"
+    },
+    "cta": {
+      "title": "Ready to transform your productivity?",
+      "description": "Join thousands of users who've already upgraded their daily habits and note-taking.",
+      "button": "Start Your Journey"
+    },
+    "footer": {
+      "rights": "All rights reserved."
+    }
+  },
+  "auth": {
+    "signIn": "Sign In",
+    "signUp": "Sign Up",
+    "email": "Email",
+    "password": "Password",
+    "confirmPassword": "Confirm Password",
+    "displayName": "Full Name",
+    "forgotPassword": "Forgot Password?",
+    "noAccount": "Don't have an account?",
+    "hasAccount": "Already have an account?",
+    "signInWithGoogle": "Continue with Google",
+    "loading": "Loading...",
+    "welcome": "Welcome to AURA"
+  },
+  "dashboard": {
+    "welcome": "Welcome back",
+    "quickActions": "Quick Actions",
+    "recentNotes": "Recent Notes",
+    "habitProgress": "Habit Progress",
+    "todaysTasks": "Today's Tasks"
+  },
+  "secretMode": {
+    "title": "AURA After Dark",
+    "description": "Unlock playful and motivational messages",
+    "unlock": "Complete 3 consecutive days to unlock",
+    "unlocked": "Secret Mode Unlocked!",
+    "enable": "Enable Secret Mode",
+    "disable": "Disable Secret Mode",
+    "consent": "This mode includes playful, flirtatious but non-explicit motivational messages. You must be 18+ to enable this feature."
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "sampleNotes": [
+    {
+      "title": "Productivity Tips for Remote Work",
+      "content": "Working from home requires discipline and structure. Create a dedicated workspace, establish clear boundaries between work and personal time, use the Pomodoro Technique for focused work sessions, and take regular breaks to maintain productivity.",
+      "tags": ["productivity", "remote-work", "tips"],
+      "category": "Work"
+    },
+    {
+      "title": "Machine Learning Fundamentals",
+      "content": "Machine learning is a subset of artificial intelligence that enables computers to learn without explicit programming. Key concepts include supervised learning, unsupervised learning, neural networks, and deep learning algorithms.",
+      "tags": ["machine-learning", "ai", "technology"],
+      "category": "Study"
+    }
+  ],
+  "sampleHabits": [
+    {
+      "title": "Morning Meditation",
+      "description": "Start each day with 10 minutes of mindfulness meditation",
+      "category": "Mindfulness",
+      "targetDays": 30,
+      "currentStreak": 0,
+      "longestStreak": 0,
+      "completions": [],
+      "isActive": true,
+      "reminderTime": "07:00"
+    },
+    {
+      "title": "Daily Reading",
+      "description": "Read for at least 20 minutes every day",
+      "category": "Learning",
+      "targetDays": 60,
+      "currentStreak": 0,
+      "longestStreak": 0,
+      "completions": [],
+      "isActive": true,
+      "reminderTime": "20:00"
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "landing": {
+    "badge": "Productividad con IA",
+    "description": "Transforma tus notas con IA, construye hábitos duraderos y alcanza tus metas con nuestra plataforma integral de productividad.",
+    "getStarted": "Empezar Gratis",
+    "tryDemo": "Probar Demo",
+    "signIn": "Iniciar Sesión",
+    "features": {
+      "ainotesflashcards": {
+        "title": "Notas IA y Tarjetas",
+        "description": "Convierte cualquier texto en resúmenes inteligentes, tarjetas y mapas mentales"
+      },
+      "habitgoaltracker": {
+        "title": "Rastreador de Hábitos",
+        "description": "Construye hábitos duraderos con seguimiento de rachas y desafíos personalizados"
+      },
+      "aiassistant": {
+        "title": "Asistente IA",
+        "description": "Obtén ayuda con escritura, planificación y resolución de problemas"
+      }
+    },
+    "stats": {
+      "title": "Confiado por miles en todo el mundo",
+      "users": "Usuarios Activos",
+      "notes": "Notas Creadas",
+      "habits": "Hábitos Rastreados",
+      "satisfaction": "Satisfacción"
+    },
+    "cta": {
+      "title": "¿Listo para transformar tu productividad?",
+      "description": "Únete a miles de usuarios que ya han mejorado sus hábitos diarios y toma de notas.",
+      "button": "Comienza Tu Viaje"
+    },
+    "footer": {
+      "rights": "Todos los derechos reservados."
+    }
+  }
+}
