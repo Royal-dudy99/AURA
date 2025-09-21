@@ -3,9 +3,9 @@ import { useNavigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import Particles from 'react-tsparticles'
 import { loadSlim } from 'tsparticles-slim'
-import { ArrowRight, Brain, Target, Sparkles, Moon, Sun} from 'lucide-react'
+import { ArrowRight, Brain, Target, Sparkles, Moon, Sun } from 'lucide-react'
 import { useTheme } from '@/hooks/useTheme'
-import { ANIMATION_CONFIG, FEATURES } from '@/lib/constants'
+import { FEATURES } from '@/lib/constants'
 
 export default function LandingPage() {
   const navigate = useNavigate()
@@ -26,7 +26,51 @@ export default function LandingPage() {
       <Particles
         id="tsparticles"
         init={particlesInit}
-        options={ANIMATION_CONFIG}
+        options={{
+          background: {
+            color: { value: '#0f172a' },
+          },
+          fpsLimit: 60,
+          interactivity: {
+            detectsOn: 'canvas', // ✅ valid
+            events: {
+              onClick: { enable: true, mode: 'push' },
+              onHover: { enable: true, mode: 'repulse' },
+              resize: true,
+            },
+            modes: {
+              push: { quantity: 4 },
+              repulse: { distance: 200, duration: 0.4 },
+            },
+          },
+          particles: {
+            color: { value: '#38bdf8' },
+            links: {
+              color: '#38bdf8',
+              distance: 150,
+              enable: true,
+              opacity: 0.5,
+              width: 1,
+            },
+            collisions: { enable: false },
+            move: {
+              direction: 'none',
+              enable: true,
+              outModes: { default: 'out' },
+              random: false,
+              speed: 2,
+              straight: false,
+            },
+            number: {
+              value: 60,
+              density: { enable: true, area: 800 },
+            },
+            opacity: { value: 0.5 },
+            shape: { type: 'circle' },
+            size: { value: { min: 1, max: 3 } },
+          },
+          detectRetina: true,
+        }}
       />
 
       {/* Header */}
@@ -55,7 +99,7 @@ export default function LandingPage() {
           >
             ES
           </button>
-          
+
           <button
             onClick={toggleTheme}
             className="p-2 rounded-lg hover:bg-white/10 transition-colors"
@@ -103,7 +147,7 @@ export default function LandingPage() {
                 {t('landing.getStarted')}
                 <ArrowRight className="ml-2 w-5 h-5" />
               </button>
-              
+
               <button
                 onClick={() => navigate('/dashboard')}
                 className="btn-secondary text-lg px-8 py-4"
@@ -122,17 +166,31 @@ export default function LandingPage() {
                 style={{ animationDelay: `${index * 0.2}s` }}
               >
                 <div className="w-16 h-16 rounded-2xl bg-gradient-aura flex items-center justify-center mx-auto mb-6 group-hover:animate-float">
-                  {feature.icon === 'brain' && <Brain className="w-8 h-8 text-white" />}
-                  {feature.icon === 'target' && <Target className="w-8 h-8 text-white" />}
-                  {feature.icon === 'sparkles' && <Sparkles className="w-8 h-8 text-white" />}
+                  {feature.icon === 'brain' && (
+                    <Brain className="w-8 h-8 text-white" />
+                  )}
+                  {feature.icon === 'target' && (
+                    <Target className="w-8 h-8 text-white" />
+                  )}
+                  {feature.icon === 'sparkles' && (
+                    <Sparkles className="w-8 h-8 text-white" />
+                  )}
                 </div>
-                
+
                 <h3 className="text-xl font-semibold mb-4 gradient-text">
-                  {t(`landing.features.${feature.title.toLowerCase().replace(/\s+/g, '')}.title`)}
+                  {t(
+                    `landing.features.${feature.title
+                      .toLowerCase()
+                      .replace(/\s+/g, '')}.title`
+                  )}
                 </h3>
-                
+
                 <p className="text-gray-400 leading-relaxed">
-                  {t(`landing.features.${feature.title.toLowerCase().replace(/\s+/g, '')}.description`)}
+                  {t(
+                    `landing.features.${feature.title
+                      .toLowerCase()
+                      .replace(/\s+/g, '')}.description`
+                  )}
                 </p>
               </div>
             ))}
@@ -143,7 +201,7 @@ export default function LandingPage() {
             <h2 className="text-3xl md:text-4xl font-bold mb-8 gradient-text">
               {t('landing.stats.title')}
             </h2>
-            
+
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
               {[
                 { value: '50K+', label: t('landing.stats.users') },
@@ -151,13 +209,15 @@ export default function LandingPage() {
                 { value: '500K+', label: t('landing.stats.habits') },
                 { value: '98%', label: t('landing.stats.satisfaction') },
               ].map((stat, index) => (
-                <div key={stat.label} className="animate-fade-in" style={{ animationDelay: `${index * 0.1}s` }}>
+                <div
+                  key={stat.label}
+                  className="animate-fade-in"
+                  style={{ animationDelay: `${index * 0.1}s` }}
+                >
                   <div className="text-2xl md:text-3xl font-bold gradient-text mb-2">
                     {stat.value}
                   </div>
-                  <div className="text-gray-400 text-sm">
-                    {stat.label}
-                  </div>
+                  <div className="text-gray-400 text-sm">{stat.label}</div>
                 </div>
               ))}
             </div>
@@ -168,11 +228,11 @@ export default function LandingPage() {
             <h2 className="text-3xl md:text-4xl font-bold mb-6">
               {t('landing.cta.title')}
             </h2>
-            
+
             <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
               {t('landing.cta.description')}
             </p>
-            
+
             <button
               onClick={() => navigate('/signup')}
               className="btn-primary text-xl px-12 py-6 animate-pulse-glow"
@@ -193,7 +253,7 @@ export default function LandingPage() {
             </div>
             <span className="text-lg font-bold gradient-text">AURA</span>
           </div>
-          
+
           <div className="text-gray-400 text-sm">
             © 2024 AURA. {t('landing.footer.rights')}
           </div>
