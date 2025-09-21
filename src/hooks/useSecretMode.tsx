@@ -1,22 +1,25 @@
+/* eslint-disable react-refresh/only-export-components */
 import { createContext, useContext, useState, useEffect, ReactNode } from 'react'
 import { useAuth } from './useAuth'
 import { firestoreService } from '@/firebase/firestore'
 import rawSecretMessages from '@/data/secretMessages.json'
-import type { SecretMessage } from '@/types'
+import type { SecretMessage, UserProfile } from '@/types'
 
 // Allowed categories as const
 const allowedCategories = ['motivation', 'habit', 'success', 'general'] as const
 type SecretMessageCategory = typeof allowedCategories[number]
 
 // Helper to check and cast JSON messages to correct types
-function sanitizeSecretMessages(messages: any[]): SecretMessage[] {
+function sanitizeSecretMessages(messages: unknown[]): SecretMessage[] {
   return messages
     .filter(
-      (msg) =>
-        typeof msg.id === 'string' &&
-        typeof msg.text === 'string' &&
-        typeof msg.category === 'string' &&
-        allowedCategories.includes(msg.category)
+      (msg: unknown): msg is SecretMessage =>
+        typeof msg === 'object' &&
+        msg !== null &&
+        typeof (msg as Record<string, unknown>).id === 'string' &&
+        typeof (msg as Record<string, unknown>).text === 'string' &&
+        typeof (msg as Record<string, unknown>).category === 'string' &&
+        allowedCategories.includes((msg as Record<string, unknown>).category as SecretMessageCategory)
     )
     .map((msg) => ({
       ...msg,
@@ -57,40 +60,13 @@ export function SecretModeProvider({ children }: SecretModeProviderProps) {
   const [isSecretModeUnlocked, setIsSecretModeUnlocked] = useState(false)
   const [consecutiveDays, setConsecutiveDays] = useState(0)
 
-  useEffect(() => {
-    if (userProfile) {
-      setIsSecretModeEnabled(userProfile.preferences.secretModeEnabled)
-      checkDailyProgress()
-    }
-    // eslint-disable-next-line
-  }, [userProfile])
-
-  const toggleSecretMode = async () => {
-    if (!user || !isSecretModeUnlocked) return
-
-    const newState = !isSecretModeEnabled
-    setIsSecretModeEnabled(newState)
-
-    try {
-      await firestoreService.setUserProfile(user.uid, {
-        preferences: {
-          ...userProfile?.preferences,
-          secretModeEnabled: newState,
-        } as any,
-      })
-    } catch (error) {
-      console.error('Error updating secret mode:', error)
-      setIsSecretModeEnabled(!newState)
-    }
-  }
-
   const checkDailyProgress = async () => {
     if (!user) return
 
     try {
       const habits = await firestoreService.getHabits(user.uid)
       let consecutive = 0
-      let currentDate = new Date()
+      const currentDate = new Date()
       for (let i = 0; i < 30; i++) {
         const dateStr = currentDate.toISOString().split('T')[0]
         const hasCompletion = habits.some(habit =>
@@ -107,6 +83,33 @@ export function SecretModeProvider({ children }: SecretModeProviderProps) {
       setIsSecretModeUnlocked(consecutive >= 3)
     } catch (error) {
       console.error('Error checking daily progress:', error)
+    }
+  }
+
+  useEffect(() => {
+    if (userProfile) {
+      setIsSecretModeEnabled(userProfile.preferences.secretModeEnabled)
+      checkDailyProgress()
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [userProfile])
+
+  const toggleSecretMode = async () => {
+    if (!user || !isSecretModeUnlocked) return
+
+    const newState = !isSecretModeEnabled
+    setIsSecretModeEnabled(newState)
+
+    try {
+      await firestoreService.setUserProfile(user.uid, {
+        preferences: {
+          ...userProfile?.preferences,
+          secretModeEnabled: newState,
+        },
+      } as Partial<UserProfile>)
+    } catch (error) {
+      console.error('Error updating secret mode:', error)
+      setIsSecretModeEnabled(!newState)
     }
   }
 

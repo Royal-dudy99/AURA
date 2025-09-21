@@ -38,25 +38,25 @@ export function generateId() {
   return Math.random().toString(36).substring(2) + Date.now().toString(36)
 }
 
-export function debounce<T extends (...args: any[]) => void>(
+export function debounce<T extends (...args: unknown[]) => void>(
   func: T,
   wait: number
 ): T {
   let timeout: NodeJS.Timeout
-  return ((...args: any[]) => {
+  return ((...args: unknown[]) => {
     clearTimeout(timeout)
-    timeout = setTimeout(() => func.apply(null, args), wait)
+    timeout = setTimeout(() => func(...args), wait)
   }) as T
 }
 
-export function throttle<T extends (...args: any[]) => void>(
+export function throttle<T extends (...args: unknown[]) => void>(
   func: T,
   limit: number
 ): T {
   let inThrottle: boolean
-  return ((...args: any[]) => {
+  return ((...args: unknown[]) => {
     if (!inThrottle) {
-      func.apply(null, args)
+      func(...args)
       inThrottle = true
       setTimeout(() => (inThrottle = false), limit)
     }

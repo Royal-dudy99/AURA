@@ -115,7 +115,7 @@ export class FirestoreService {
     
     const sortedDates = completions.sort().reverse()
     let streak = 0
-    let currentDate = new Date()
+    const currentDate = new Date()
     
     for (const dateStr of sortedDates) {
       const date = new Date(dateStr)
@@ -124,7 +124,7 @@ export class FirestoreService {
       
       if (diffDays <= 1) {
         streak++
-        currentDate = date
+        currentDate.setDate(date.getDate() - 1)
       } else {
         break
       }
@@ -143,14 +143,14 @@ export class FirestoreService {
 
   // Community Templates
   async getCommunityTemplates() {
-    const templatesRef = collection(db, 'communityTemplates')
+    const templatesRef = collection(db, 'communities/templates')
     const q = query(templatesRef, orderBy('likes', 'desc'), limit(20))
     const snapshot = await getDocs(q)
     return snapshot.docs.map(doc => doc.data() as CommunityTemplate)
   }
 
   // Real-time subscriptions
-  subscribeToUserData(userId: string, callback: (data: any) => void) {
+  subscribeToUserData(userId: string, callback: (data: unknown) => void) {
     const userRef = doc(db, 'users', userId)
     return onSnapshot(userRef, callback)
   }
