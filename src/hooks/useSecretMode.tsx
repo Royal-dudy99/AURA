@@ -66,7 +66,7 @@ export function SecretModeProvider({ children }: SecretModeProviderProps) {
 
     try {
       const habits = await firestoreService.getHabits(user.uid)
-      const today = new Date().toISOString().split('T')[0]
+      
       
       // Calculate consecutive days with habit completions
       let consecutive = 0
