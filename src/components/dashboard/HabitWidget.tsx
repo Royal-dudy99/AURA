@@ -1,4 +1,3 @@
-import React from 'react'
 import { Link } from 'react-router-dom'
 import { Target, TrendingUp, Calendar, ArrowRight } from 'lucide-react'
 import type { Habit } from '@/types'

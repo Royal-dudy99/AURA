@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { Lock, Unlock, Heart, Star } from 'lucide-react'
 import { useSecretMode } from '@/hooks/useSecretMode'
 

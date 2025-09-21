@@ -1,4 +1,3 @@
-import React from 'react'
 import { Brain, Target, TrendingUp, Trophy } from 'lucide-react'
 
 interface StatsCardsProps {

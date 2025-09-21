@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import { Heart, Download, Eye, Share, Bookmark } from 'lucide-react'
+import { useState } from 'react'
+import { Heart, Download, Share, Bookmark } from 'lucide-react'
 import { formatRelativeTime } from '@/lib/utils'
 import type { CommunityTemplate } from '@/types'
 

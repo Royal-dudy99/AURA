@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { Sparkles, Send, Loader } from 'lucide-react'
 import { aiService } from '@/lib/aiService'
 
@@ -13,12 +13,11 @@ export default function AIQuickInput() {
 
     setLoading(true)
     try {
-      // Check if it's a summarize/draft/plan request
       const lowerInput = input.toLowerCase()
       let aiResponse
 
       if (lowerInput.includes('summarize') || lowerInput.includes('summary')) {
-        const aiResponse = await aiService.summarizeText(input)
+        aiResponse = await aiService.summarizeText(input)
       } else if (lowerInput.includes('draft') || lowerInput.includes('write')) {
         aiResponse = await aiService.generateWriting(input)
       } else {

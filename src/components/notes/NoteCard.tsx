@@ -1,4 +1,3 @@
-import React from 'react'
 import { Link } from 'react-router-dom'
 import { FileText, Eye, Edit, Trash2, Brain, Target } from 'lucide-react'
 import { formatRelativeTime, truncateText } from '@/lib/utils'

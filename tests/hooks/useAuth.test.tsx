@@ -1,5 +1,6 @@
 import { renderHook } from '@testing-library/react'
-import { useAuth, AuthProvider } from '@/hooks/useAuth'
+import { useAuth, AuthProvider } from '../../src/hooks/useAuth'
+
 
 // Mock Firebase
 jest.mock('@/firebase/config', () => ({

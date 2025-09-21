@@ -1,10 +1,12 @@
-import React, { useState } from 'react'
-import { Clock, Target, Calendar, Bell } from 'lucide-react'
+import { useState } from 'react'
+import { Bell } from 'lucide-react'
+import { Timestamp } from 'firebase/firestore'
 import { useAuth } from '@/hooks/useAuth'
 import { firestoreService } from '@/firebase/firestore'
 import { HABIT_CATEGORIES } from '@/lib/constants'
 import Button from '@/components/ui/Button'
 import type { Habit } from '@/types'
+
 
 interface CreateHabitModalProps {
   onHabitCreated: (habit: Habit) => void
@@ -36,16 +38,19 @@ export default function CreateHabitModal({ onHabitCreated }: CreateHabitModalPro
     setLoading(true)
     try {
       const habitData = {
-        title: formData.title.trim(),
-        description: formData.description.trim(),
-        category: formData.category,
-        targetDays: formData.targetDays,
-        currentStreak: 0,
-        longestStreak: 0,
-        completions: [],
-        isActive: true,
-        reminderTime: formData.reminderTime || undefined,
-      }
+  title: formData.title.trim(),
+  description: formData.description.trim(),
+  category: formData.category,
+  targetDays: formData.targetDays,
+  currentStreak: 0,
+  longestStreak: 0,
+  completions: [],
+  isActive: true,
+  reminderTime: formData.reminderTime || undefined,
+  createdAt: Timestamp.now(),    // THIS IS THE FIX!
+  updatedAt: Timestamp.now()     // THIS IS THE FIX!
+}
+
 
       const newHabit = await firestoreService.createHabit(user.uid, habitData)
       onHabitCreated(newHabit)

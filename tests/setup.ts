@@ -1,12 +1,20 @@
 import '@testing-library/jest-dom'
 
-// Mock Firebase
-jest.mock('@/firebase/config', () => ({
+// Mock Firebase (adjust the path as needed)
+jest.mock('../../src/firebase/config', () => ({
   auth: {},
   db: {},
 }))
 
-// Mock react-i18next
+jest.mock('../../src/firebase/auth', () => ({
+  authService: {
+    signIn: jest.fn(),
+    signUp: jest.fn(),
+    signOut: jest.fn(),
+  },
+}))
+
+// Mock react-i18next with explicit type for 'key'
 jest.mock('react-i18next', () => ({
   useTranslation: () => ({
     t: (key: string) => key,
@@ -18,8 +26,10 @@ jest.mock('react-i18next', () => ({
   },
 }))
 
-// Mock Particles
+// Mock Particles (createElement, no JSX)
 jest.mock('react-tsparticles', () => ({
   __esModule: true,
-  default: () => <div data-testid="particles" />,
+  default: function MockParticles() {
+    return require('react').createElement('div', { 'data-testid': 'particles' });
+  },
 }))

@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react'
-import { Users, Search, Heart, Download, Plus, Filter } from 'lucide-react'
+import { useState, useEffect } from 'react'
+import { Users, Search, Plus } from 'lucide-react'
 import { firestoreService } from '@/firebase/firestore'
 import TemplateCard from './TemplateCard'
 import CreateTemplateModal from './CreateTemplateModal'

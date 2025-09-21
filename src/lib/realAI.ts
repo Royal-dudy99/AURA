@@ -1,4 +1,5 @@
 import OpenAI from 'openai'
+import type { AIResponse } from '@/types'
 
 const openai = new OpenAI({
   apiKey: import.meta.env.VITE_OPENAI_API_KEY,

@@ -1,4 +1,3 @@
-import React from 'react'
 import { Target, TrendingUp, Calendar, Award } from 'lucide-react'
 import type { Habit } from '@/types'
 
@@ -50,7 +49,7 @@ export default function HabitsStats({ habits }: HabitsStatsProps) {
 
   return (
     <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-      {stats.map((stat, index) => (
+      {stats.map((stat) => (
         <div key={stat.label} className="card group hover:scale-105 transition-transform">
           <div className="flex items-center justify-between">
             <div>

@@ -1,10 +1,11 @@
 import React from 'react'
 import { render, screen } from '@testing-library/react'
 import { BrowserRouter } from 'react-router-dom'
-import Dashboard from '@/components/dashboard/Dashboard'
-import { AuthProvider } from '@/hooks/useAuth'
-import { ThemeProvider } from '@/hooks/useTheme'
-import { SecretModeProvider } from '@/hooks/useSecretMode'
+import Dashboard from '../../src/components/dashboard/Dashboard'
+import { AuthProvider } from '../../src/hooks/useAuth'
+import { ThemeProvider } from '../../src/hooks/useTheme'
+import { SecretModeProvider } from '../../src/hooks/useSecretMode'
+
 
 // Mock the auth hook
 jest.mock('@/hooks/useAuth', () => ({

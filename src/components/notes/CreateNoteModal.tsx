@@ -1,12 +1,14 @@
 import React, { useState } from 'react'
 import { useDropzone } from 'react-dropzone'
-import { Upload, FileText, Loader, Sparkles, X } from 'lucide-react'
+import { Upload, Sparkles } from 'lucide-react'
 import { useAuth } from '@/hooks/useAuth'
 import { firestoreService } from '@/firebase/firestore'
 import { aiService } from '@/lib/aiService'
 import { NOTE_CATEGORIES } from '@/lib/constants'
 import Button from '@/components/ui/Button'
 import type { Note } from '@/types'
+import { Timestamp } from 'firebase/firestore'
+
 
 interface CreateNoteModalProps {
   onNoteCreated: (note: Note) => void
@@ -89,14 +91,17 @@ export default function CreateNoteModal({ onNoteCreated }: CreateNoteModalProps)
     setLoading(true)
     try {
       const noteData = {
-        title: formData.title.trim(),
-        content: formData.content.trim(),
-        summary: aiResults.summary,
-        flashcards: aiResults.flashcards || [],
-        mindmap: aiResults.mindmap || [],
-        category: formData.category,
-        tags: formData.tags.split(',').map(tag => tag.trim()).filter(Boolean),
-      }
+  title: formData.title.trim(),
+  content: formData.content.trim(),
+  summary: aiResults.summary,
+  flashcards: aiResults.flashcards || [],
+  mindmap: aiResults.mindmap || [],
+  category: formData.category,
+  tags: formData.tags.split(',').map(tag => tag.trim()).filter(Boolean),
+  createdAt: Timestamp.now(),    // FIX: Added!
+  updatedAt: Timestamp.now(),    // FIX: Added!
+}
+
 
       const newNote = await firestoreService.createNote(user.uid, noteData)
       onNoteCreated(newNote)

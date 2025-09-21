@@ -137,7 +137,7 @@ export const ANIMATION_CONFIG = {
     },
   },
   interactivity: {
-    detect_on: 'canvas',
+    detectsOn: 'canvas', // <-- this line is crucial
     events: {
       onhover: {
         enable: true,

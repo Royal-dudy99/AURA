@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import { useAuth } from '@/hooks/useAuth'
 import { useSecretMode } from '@/hooks/useSecretMode'
 import { firestoreService } from '@/firebase/firestore'

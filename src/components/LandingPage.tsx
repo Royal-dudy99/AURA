@@ -1,9 +1,9 @@
-import React, { useCallback } from 'react'
+import { useCallback } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import Particles from 'react-tsparticles'
 import { loadSlim } from 'tsparticles-slim'
-import { ArrowRight, Brain, Target, Sparkles, Moon, Sun, Globe } from 'lucide-react'
+import { ArrowRight, Brain, Target, Sparkles, Moon, Sun} from 'lucide-react'
 import { useTheme } from '@/hooks/useTheme'
 import { ANIMATION_CONFIG, FEATURES } from '@/lib/constants'
 

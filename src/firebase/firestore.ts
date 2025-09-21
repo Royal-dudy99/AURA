@@ -7,12 +7,10 @@ import {
   updateDoc,
   deleteDoc,
   query,
-  where,
   orderBy,
   limit,
   Timestamp,
-  onSnapshot,
-  QueryConstraint,
+  onSnapshot
 } from 'firebase/firestore'
 import { db } from './config'
 import type { Note, Habit, Challenge, CommunityTemplate, UserProfile } from '@/types'

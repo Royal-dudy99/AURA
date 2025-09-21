@@ -1,4 +1,3 @@
-import React from 'react'
 import { Bell, Moon, Sun, Globe } from 'lucide-react'
 import { useTheme } from '@/hooks/useTheme'
 import { useSecretMode } from '@/hooks/useSecretMode'

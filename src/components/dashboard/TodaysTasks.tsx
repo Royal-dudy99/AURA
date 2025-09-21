@@ -1,4 +1,3 @@
-import React from 'react'
 import { CheckCircle, Circle, Target } from 'lucide-react'
 import { useAuth } from '@/hooks/useAuth'
 import { firestoreService } from '@/firebase/firestore'

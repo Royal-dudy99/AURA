@@ -1,4 +1,4 @@
-import { validateEmail, validatePassword, calculateStreak, truncateText } from '@/lib/utils'
+import { validateEmail, validatePassword, calculateStreak, truncateText } from '../../src/lib/utils'
 
 describe('utils', () => {
   describe('validateEmail', () => {

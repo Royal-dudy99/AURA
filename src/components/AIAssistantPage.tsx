@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import { Send, Sparkles, Copy, Download, Trash2 } from 'lucide-react'
+import { useState } from 'react'
+import { Send, Sparkles, Copy, Trash2 } from 'lucide-react'
 import { aiService } from '@/lib/aiService'
 import { PROMPT_TEMPLATES } from '@/lib/constants'
 import type { ChatMessage } from '@/types'
@@ -8,7 +8,7 @@ export default function AIAssistantPage() {
   const [messages, setMessages] = useState<ChatMessage[]>([])
   const [input, setInput] = useState('')
   const [loading, setLoading] = useState(false)
-  const [selectedTemplate, setSelectedTemplate] = useState('')
+  const [, setSelectedTemplate] = useState('')
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -128,7 +128,6 @@ export default function AIAssistantPage() {
                   }`}
                 >
                   <p className="whitespace-pre-wrap">{message.content}</p>
-                  
                   {message.role === 'assistant' && (
                     <div className="flex items-center space-x-2 mt-3 pt-3 border-t border-white/10">
                       <button
@@ -144,7 +143,7 @@ export default function AIAssistantPage() {
               </div>
             ))
           )}
-          
+
           {loading && (
             <div className="flex justify-start">
               <div className="bg-white/5 border border-white/10 rounded-lg p-4 mr-4">
@@ -179,7 +178,6 @@ export default function AIAssistantPage() {
 
       {/* Mock AI Notice */}
       <div className="text-xs text-gray-500 text-center">
-      
       </div>
     </div>
   )

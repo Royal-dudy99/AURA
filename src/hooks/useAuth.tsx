@@ -1,9 +1,10 @@
-import React, { createContext, useContext, useEffect, useState, ReactNode } from 'react'
+import { createContext, useContext, useEffect, useState, ReactNode } from 'react'
 import { User, onAuthStateChanged } from 'firebase/auth'
 import { auth } from '@/firebase/config'
 import { authService } from '@/firebase/auth'
 import { firestoreService } from '@/firebase/firestore'
 import type { UserProfile } from '@/types'
+import { Timestamp } from 'firebase/firestore' // <-- ADD THIS!
 
 interface AuthContextType {
   user: User | null
@@ -38,20 +39,17 @@ export function AuthProvider({ children }: AuthProviderProps) {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, async (user) => {
       setUser(user)
-      
       if (user) {
         try {
           let profile = await firestoreService.getUserProfile(user.uid)
-          
           if (!profile) {
-            // Create new user profile
             profile = {
               uid: user.uid,
-              email: user.email!,
-              displayName: user.displayName || 'Anonymous',
-              photoURL: user.photoURL,
+              email: user.email ?? '',
+              displayName: user.displayName ?? 'Anonymous',
+              photoURL: user.photoURL ?? '',
               preferences: {
-                theme: 'dark' as const,
+                theme: 'dark',
                 language: 'en',
                 notifications: true,
                 secretModeEnabled: false,
@@ -62,13 +60,11 @@ export function AuthProvider({ children }: AuthProviderProps) {
                 longestStreak: 0,
                 challengesCompleted: 0,
               },
-              createdAt: new Date() as any,
-              updatedAt: new Date() as any,
+              createdAt: Timestamp.now(), // <-- FIX: use Timestamp instead of Date
+              updatedAt: Timestamp.now(), // <-- FIX: use Timestamp instead of Date
             }
-            
             await firestoreService.setUserProfile(user.uid, profile)
           }
-          
           setUserProfile(profile)
         } catch (error) {
           console.error('Error fetching user profile:', error)
@@ -76,10 +72,8 @@ export function AuthProvider({ children }: AuthProviderProps) {
       } else {
         setUserProfile(null)
       }
-      
       setLoading(false)
     })
-
     return unsubscribe
   }, [])
 

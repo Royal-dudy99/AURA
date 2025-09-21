@@ -1,8 +1,9 @@
 import React from 'react'
 import { render, screen, fireEvent } from '@testing-library/react'
 import { BrowserRouter } from 'react-router-dom'
-import LandingPage from '@/components/LandingPage'
-import { ThemeProvider } from '@/hooks/useTheme'
+import LandingPage from '../../src/components/LandingPage'
+import { ThemeProvider } from '../../src/hooks/useTheme'
+
 
 const TestWrapper = ({ children }: { children: React.ReactNode }) => (
   <BrowserRouter>

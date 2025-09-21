@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react'
-import { Plus, Target, TrendingUp, Calendar, Filter } from 'lucide-react'
+import { useState, useEffect } from 'react'
+import { Plus, Target } from 'lucide-react'
 import { useAuth } from '@/hooks/useAuth'
 import { firestoreService } from '@/firebase/firestore'
 import Modal from '@/components/ui/Modal'
